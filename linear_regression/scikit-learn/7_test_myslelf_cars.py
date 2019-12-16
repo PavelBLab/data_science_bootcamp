@@ -6,15 +6,13 @@ sns.set()
 import os
 import warnings
 warnings.filterwarnings('ignore')
+import os.path as path
 
-
+csv_folder = path.abspath(path.join(path.join(__file__, "../../.."), 'csv_files'))
+# print(path.abspath(__file__))  os.path.abspath(__file__) method in Python is used to get the file path and 2nd argument ../../.. move 3 levels up
+# print(csv_folder)
 pd.set_option('max_columns', 20)
-current_dir = os.getcwd()
-# print(current_dir)
-previous_dir = os.path.dirname(os.path.dirname(current_dir))   # os.path.dirname() method in Python is used to get the directory name from the specified path
-# print(previous_dir)
-df = pd.read_csv(os.path.join(previous_dir,
-                              r'csv_files\1.04. Real-life example.csv'))
+df = pd.read_csv(path.join(csv_folder, '1.04. Real-life example.csv'))
 
 # print(df.head(2))
 # print(df.describe(include='all'))
